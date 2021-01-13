@@ -27,11 +27,11 @@ def clipboard_input(user_xpath, user_input):
     return
 
 
-while True:
-    driver = webdriver.Chrome('chromedriver')
-    driver.get(login_url)
-    driver.implicitly_wait(10)
+driver = webdriver.Chrome('chromedriver')
+driver.get(login_url)
+driver.implicitly_wait(10)
 
+while True:
     clipboard_input('//*[@id="id"]', config()['id'])
     clipboard_input('//*[@id="pw"]', config()['pwd'])
     driver.find_element_by_xpath('//*[@id="log.login"]').click()
@@ -57,5 +57,4 @@ while True:
         driver.switch_to_window(driver.window_handles[0])
 
     count += 1
-    driver.close()
     print(f'{count}번 실행하였습니다.')
