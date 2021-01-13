@@ -42,21 +42,27 @@ if driver.current_url == 'https://nid.naver.com/nidlogin.login':
 
 while True:
     wait_time = 30
+    driver.get(base_url)
+    time.sleep(1)
     driver.get(search_url)
     print('페이지 접속 완료.')
 
     rate = random.randrange(1, 3)
 
-    for i in range(1, rate):
+    for i in range(0, rate):
         page_value = random.randrange(1, 7)
         driver.find_element_by_xpath(f'//*[@id="main_pack"]/section[1]/div/div[2]/panel-list/div/ul/li[{page_value}]').click()
         sleep_interval = random.randrange(1, 5)
         wait_time -= sleep_interval
         time.sleep(sleep_interval)
-        driver.switch_to_window(driver.window_handles[1])
+        try:
+            driver.switch_to_window(driver.window_handles[1])
+        except IndexError:
+            continue
         driver.close()
         driver.switch_to_window(driver.window_handles[0])
-    
+
+    print(f'{wait_time}초 대기합니다.')
     time.sleep(wait_time)
     count += 1
     print(f'{count}번 실행하였습니다.')
