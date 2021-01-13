@@ -30,18 +30,18 @@ def clipboard_input(user_xpath, user_input):
 driver = webdriver.Chrome('chromedriver')
 driver.get(login_url)
 driver.implicitly_wait(10)
+clipboard_input('//*[@id="id"]', config()['id'])
+clipboard_input('//*[@id="pw"]', config()['pwd'])
+driver.find_element_by_xpath('//*[@id="log.login"]').click()
+time.sleep(0.5)
+
+if driver.current_url == 'https://nid.naver.com/nidlogin.login':
+    print('로그인에 실패했습니다. 유저 정보를 올바르게 입력 후 다시 실행해주세요.')
+    driver.close()
+    break
+
 
 while True:
-    clipboard_input('//*[@id="id"]', config()['id'])
-    clipboard_input('//*[@id="pw"]', config()['pwd'])
-    driver.find_element_by_xpath('//*[@id="log.login"]').click()
-    time.sleep(0.5)
-
-    if driver.current_url == 'https://nid.naver.com/nidlogin.login':
-        print('로그인에 실패했습니다. 유저 정보를 올바르게 입력 후 다시 실행해주세요.')
-        driver.close()
-        break
-
     driver.get(search_url)
     print('페이지 접속 완료.')
 
