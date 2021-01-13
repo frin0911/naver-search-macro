@@ -4,11 +4,11 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.common.keys import Keys
 import time
 import json
+import random
 
-driver = webdriver.Chrome('chromedriver')
 count = 0
 base_url = 'https://naver.com'
-login_url = 'https://nid.naver.com/nidlogin.login?url=https://search.naver.com/search.naver?ie=UTF-8&sm=whl_hty&query=%EB%AF%B8%EC%8A%A4%ED%84%B0%ED%8A%B8%EB%A1%AF+%EC%95%8C%ED%8E%98%EC%8A%A4'
+login_url = 'https://nid.naver.com/nidlogin.login'
 search_url = 'https://search.naver.com/search.naver?query=%EB%AF%B8%EC%8A%A4%ED%84%B0%ED%8A%B8%EB%A1%AF+%EC%95%8C%ED%8E%98%EC%8A%A4'
 
 
@@ -28,6 +28,7 @@ def clipboard_input(user_xpath, user_input):
 
 
 while True:
+    driver = webdriver.Chrome('chromedriver')
     driver.get(login_url)
     driver.implicitly_wait(10)
 
@@ -40,10 +41,21 @@ while True:
         print('로그인에 실패했습니다. 유저 정보를 올바르게 입력 후 다시 실행해주세요.')
         driver.close()
         break
-    
-    driver.get(search_url)
-    print('페이지 접속 완료. 30초 대기합니다.')
 
-    time.sleep(30)
+    driver.get(search_url)
+    print('페이지 접속 완료.')
+
+    rate = random.randrange(1, 3)
+
+    for i in range(1, rate):
+        page_value = random.randrange(1, 7)
+        driver.find_element_by_xpath(f'//*[@id="main_pack"]/section[1]/div/div[2]/panel-list/div/ul/li[{page_value}]').click()
+        sleep_interval = random.randrange(1, 5)
+        time.sleep(sleep_interval)
+        driver.switch_to_window(driver.window_handles[1])
+        driver.close()
+        driver.switch_to_window(driver.window_handles[0])
+
     count += 1
-    print(f'30초 대기 완료. {count}번 실행하였습니다.')
+    driver.close()
+    print(f'{count}번 실행하였습니다.')
