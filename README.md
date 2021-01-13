@@ -3,7 +3,7 @@
 1. 파이썬 설치: https://www.python.org/ftp/python/3.8.7/python-3.8.7-amd64.exe (클릭 시 바로 설치)
 2. Install Now 누르고 설치.
 3. 크롬 설치: https://www.google.com/chrome/
-4. 크롬 이미 있는 경우, 브라우저 주소창에 `chrome://version` 입력.
+4. 브라우저 주소창에 `chrome://version` 입력.
 5. ![cap](https://github.com/frin0911/naver-search-macro/blob/main/cap.PNG?raw=true) 여기서 나오는 84 부분을 기억한다.
 6. https://chromedriver.chromium.org/downloads 페이지에서 저 숫자와 같은 링크 클릭
 7. 이동된 페이지에서 `chromedriver_win32.zip` 파일 다운받고 압축 푼 후에 **파일만** 매크로 폴더에 같이 넣어놓는다.
