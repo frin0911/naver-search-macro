@@ -1,3 +1,7 @@
+https://gall.dcinside.com/mgallery/board/view/?id=irudagall&no=58291 참고
+고쳐오겠읍니다.
+
+
 # 실검총공용 매크로
 
 1. 파이썬 설치: https://www.python.org/ftp/python/3.8.7/python-3.8.7-amd64.exe (클릭 시 바로 설치)
