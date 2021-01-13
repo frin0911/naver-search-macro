@@ -40,7 +40,8 @@ while True:
         print('로그인에 실패했습니다. 유저 정보를 올바르게 입력 후 다시 실행해주세요.')
         driver.close()
         break
-
+    
+    driver.get(search_url)
     print('페이지 접속 완료. 30초 대기합니다.')
 
     time.sleep(30)
